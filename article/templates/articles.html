@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+    <ul id="main_menu">
+        <li role="presentation" class="active"><a href="/articles/all">Статьи</a></li>
+        <li role="presentation"><a href="/articles/create">Создать</a></li>
+        <li role="presentation"><a href="/admin/">Админка</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Language is: {{ language }}</h2>
+<h2 class="text-center">Session language is: {{ session_language }}</h2>
+{% if articles > 0 %}
+    {% for article in articles %}
+        <!-- Blog Post 1
+		 <p><img class="img-responsive" src="assets/img/post01.jpg"></p> -->
+		 <a href="articles/get/{{ article.id }}"><h3 class="ctitle">{{ article.title }}</h3></a>
+		 <p><csmall>Posted: April 25, 2014.</csmall> | <csmall2>By: Admin - 3 Comments</csmall2></p>
+		 <p>{{ article.body|truncatewords:'10' }}</p>
+		 <p><a href="articles/get/{{ article.id }}">[Узнать]</a></p>
+		 <div class="hline"></div>
+
+		 <div class="spacing"></div>
+    {% endfor %}
+{% else %}
+    <p> Ничего нет.</p>
+{% endif %}
+
+{% endblock %}
